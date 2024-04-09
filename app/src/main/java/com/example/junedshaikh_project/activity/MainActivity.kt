@@ -1,9 +1,10 @@
-package com.example.junedshaikh_project
+package com.example.junedshaikh_project.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.junedshaikh_project.R
 import com.example.junedshaikh_project.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.junedshaikh_project.MainActivity
 import com.example.junedshaikh_project.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -62,7 +61,7 @@ class LoginActivity : AppCompatActivity() {
                     finish()
                 } else {
                     Toast.makeText(
-                        this, "Login failed: ${task.exception?.message}",
+                        this, "Login failed:",
                         Toast.LENGTH_SHORT
                     ).show()
                 }

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.junedshaikh_project.MainActivity
 import com.example.junedshaikh_project.databinding.ActivityRegistorBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -63,7 +62,7 @@ class RegistorActivity : AppCompatActivity() {
                     finish()
                 } else {
                     Toast.makeText(
-                        this, "Registration failed: ${task.exception?.message}",
+                        this, "Registration failed",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
