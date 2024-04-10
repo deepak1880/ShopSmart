@@ -9,12 +9,17 @@ import coil.load
 import com.example.junedshaikh_project.databinding.CartItemListingBinding
 import com.example.junedshaikh_project.db.Product
 
-class CartAdapter : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
+class CartAdapter(private val onClick: (Product) -> Unit) :
+    RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
     private var productList: List<Product> = emptyList()
     fun submitList(list: List<Product>) {
         productList = list
         notifyDataSetChanged()
+    }
+
+    fun isCartEmpty(): Boolean {
+        return productList.isEmpty()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
@@ -33,6 +38,13 @@ class CartAdapter : RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
 
     inner class CartViewHolder(private val binding: CartItemListingBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
+        init {
+            binding.parentCard.setOnClickListener {
+                onClick.invoke(productList[adapterPosition])
+            }
+        }
+
         fun bind(product: Product) {
             binding.apply {
                 productImage.load(product.imageUrl)
