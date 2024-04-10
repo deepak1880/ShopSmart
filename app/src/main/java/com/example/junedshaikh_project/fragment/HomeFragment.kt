@@ -6,16 +6,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.junedshaikh_project.adapter.ProductAdapter
 import com.example.junedshaikh_project.databinding.FragmentHomeBinding
-import com.example.junedshaikh_project.model.Product
+import com.example.junedshaikh_project.db.Product
+import com.example.junedshaikh_project.db.ProductDatabase
 import com.example.thefoodcoast.base.BaseFragment
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private var productAdapter: ProductAdapter? = null
     val db = Firebase.firestore
+    private var database: ProductDatabase? = null
     override fun getFragmentBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -37,7 +42,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 }
                 binding.productRv.layoutManager = LinearLayoutManager(context)
                 productAdapter = ProductAdapter(productList, onClickCart = {
-                    // Handle onClickCart action
+                    CoroutineScope(Dispatchers.IO).launch {
+                        it.inCart = true
+                        ProductDatabase.getDatabase(requireContext()).getNoteDao().insert(it)
+                    }
+
                 }, onClickBuy = {
                     // Handle onClickBuy action
                 })
@@ -47,6 +56,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 Log.e("HomeFragment", "Error getting documents.")
                 exception.printStackTrace()
             }
+
 
     }
 }

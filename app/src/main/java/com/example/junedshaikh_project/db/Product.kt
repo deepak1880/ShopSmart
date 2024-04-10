@@ -6,15 +6,18 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "product_table")
 data class Product(
-    @PrimaryKey(autoGenerate = true)
-    val id:Long=0,
     @ColumnInfo(name = "name")
     val name: String,
     @ColumnInfo(name = "description")
-    val description: String?,
+    val description: String,
     @ColumnInfo(name = "price")
-    val price: Double?,
+    val price: Double,
     @ColumnInfo(name = "imageUrl")
-    val imageUrl: String
+    val imageUrl: String,
+    var inCart: Boolean = false,
+    var quantity: Int = 1
 
-)
+) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0
+}

@@ -5,8 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.junedshaikh_project.databinding.ProductListingItemBinding
-import com.example.junedshaikh_project.model.Product
-
+import com.example.junedshaikh_project.db.Product
 class ProductAdapter(
     private val products: List<Product>,
     private var onClickCart: (Product) -> Unit,
