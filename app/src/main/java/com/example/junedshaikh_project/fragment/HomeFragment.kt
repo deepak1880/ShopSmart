@@ -11,6 +11,7 @@ import com.example.thefoodcoast.base.BaseFragment
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 
+
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private var productAdapter: ProductAdapter? = null
@@ -44,6 +45,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             }
             .addOnFailureListener { exception ->
                 Log.e("HomeFragment", "Error getting documents.")
+                exception.printStackTrace()
             }
 
     }
