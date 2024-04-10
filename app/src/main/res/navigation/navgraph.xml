@@ -17,7 +17,11 @@
         android:id="@+id/cartFragment"
         android:name="com.example.junedshaikh_project.fragment.CartFragment"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_cartFragment_to_checkoutFragment"
+            app:destination="@id/checkOutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/moreFragment"
         android:name="com.example.junedshaikh_project.fragment.MoreFragment"
@@ -28,6 +32,20 @@
         android:name="com.example.junedshaikh_project.fragment.DetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
+    <fragment
+        android:id="@+id/checkOutFragment"
+        android:name="com.example.junedshaikh_project.fragment.CheckOutFragment"
+        android:label="fragment_check_out"
+        tools:layout="@layout/fragment_check_out">
+        <action
+            android:id="@+id/action_checkoutFragment_to_thankyouFragment"
+            app:destination="@id/thankyouFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/thankyouFragment"
+        android:name="com.example.junedshaikh_project.fragment.ThankyouFragment"
+        android:label="fragment_thankyou"
+        tools:layout="@layout/fragment_thankyou" />
 
 
 </navigation>

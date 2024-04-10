@@ -3,6 +3,7 @@ package com.example.junedshaikh_project.fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.junedshaikh_project.R
 import com.example.junedshaikh_project.adapter.CartAdapter
@@ -43,6 +44,13 @@ class CartFragment : BaseFragment<FragmentCartBinding>() {
                 cartAdapter!!.submitList(products)
                 updateUIVisibility()
             }
+
+        binding.orderNowButton.setOnClickListener {
+            findNavController().navigate(
+                R.id.action_cartFragment_to_checkoutFragment
+            )
+
+        }
 
     }
 

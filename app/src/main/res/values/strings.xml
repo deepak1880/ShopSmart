@@ -19,6 +19,8 @@
     <string name="logout">Logout</string>
     <string name="my_cart">My Cart</string>
     <string name="product_details">Product Details</string>
+    <string name="checkout_page">Checkout Page</string>
+    <string name="order_confirmation_message">Your order has been placed.</string>
 
     <string-array name="quantity_array">
         <item>1</item>
