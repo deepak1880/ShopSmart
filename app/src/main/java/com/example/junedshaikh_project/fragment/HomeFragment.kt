@@ -1,9 +1,12 @@
 package com.example.junedshaikh_project.fragment
 
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.junedshaikh_project.R
 import com.example.junedshaikh_project.adapter.ProductAdapter
 import com.example.junedshaikh_project.databinding.FragmentHomeBinding
 import com.example.junedshaikh_project.db.Product
@@ -49,11 +52,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
                 }, onClickBuy = {
                     // Handle onClickBuy action
+                }, onClickImage = {
+                    val bundle = Bundle()
+                    bundle.putSerializable("product", it)
+                    findNavController().navigate(
+                        R.id.action_homeFragment_to_detailsFragment,
+                        bundle
+                    )
                 })
                 binding.productRv.adapter = productAdapter
             }
             .addOnFailureListener { exception ->
-                Log.e("HomeFragment", "Error getting documents.")
                 exception.printStackTrace()
             }
 

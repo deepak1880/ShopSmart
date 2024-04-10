@@ -49,8 +49,8 @@ class CartAdapter(private val onClick: (Product) -> Unit) :
             binding.apply {
                 productImage.load(product.imageUrl)
                 orderItemTitle.text = product.name
-                orderItemType.text = product.description
-                orderItemCost.text = product.price.toString()
+                orderItemType.text = "$${product.price}"
+               // orderItemCost.text = product.price.toString()
                 spinnerQuantity.setSelection(product.quantity - 1)
 
                 spinnerQuantity.onItemSelectedListener =

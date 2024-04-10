@@ -18,6 +18,7 @@
     <string name="profile_details">Profile Details</string>
     <string name="logout">Logout</string>
     <string name="my_cart">My Cart</string>
+    <string name="product_details">Product Details</string>
 
     <string-array name="quantity_array">
         <item>1</item>

@@ -9,7 +9,8 @@ import com.example.junedshaikh_project.db.Product
 class ProductAdapter(
     private val products: List<Product>,
     private var onClickCart: (Product) -> Unit,
-    private var onClickBuy: (Product) -> Unit
+    private var onClickBuy: (Product) -> Unit,
+    private var onClickImage:(Product)->Unit
 ) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
@@ -43,6 +44,10 @@ class ProductAdapter(
                 buyNowBtn.setOnClickListener {
                     onClickBuy.invoke(product)
                 }
+                productImageView.setOnClickListener{
+                    onClickImage.invoke((product))
+                }
+
             }
         }
     }
