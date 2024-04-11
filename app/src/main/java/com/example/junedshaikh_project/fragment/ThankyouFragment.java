@@ -5,10 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.junedshaikh_project.databinding.FragmentThankyouBinding;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.junedshaikh_project.databinding.FragmentThankyouBinding;
 
 public class ThankyouFragment extends Fragment {
 
@@ -24,8 +25,14 @@ public class ThankyouFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // Your onViewCreated logic here
-//        return view;
+
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            String name = bundle.getString("name");
+            if (name != null) {
+                binding.personTextView.setText(name);
+            }
+        }
     }
 
     @Override

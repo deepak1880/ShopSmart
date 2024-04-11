@@ -35,8 +35,10 @@ public class CheckOutFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (validateInputs()) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("name", binding.nameEditText.getText().toString().trim());
                     NavController navController = Navigation.findNavController(requireActivity(), R.id.fragentContainer);
-                    navController.navigate(R.id.action_checkoutFragment_to_thankyouFragment);
+                    navController.navigate(R.id.action_checkoutFragment_to_thankyouFragment,bundle);
                 }
             }
         });

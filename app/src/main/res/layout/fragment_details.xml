@@ -68,14 +68,27 @@
                 android:id="@+id/productPriceTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="@string/product_price"
                 android:textColor="#000"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/spinnerQuantity"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/productDescTv" />
+
+            <Spinner
+                android:id="@+id/spinnerQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:entries="@array/quantity_array"
+                app:layout_constraintStart_toEndOf="@+id/productPriceTv"
+                app:layout_constraintTop_toBottomOf="@+id/productDescTv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/productPriceTv"
+               />
 
             <Button
                 android:id="@+id/addCartBtn"
@@ -97,7 +110,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:backgroundTint="@color/yellow"
                 android:text="@string/buy_now"
@@ -106,6 +118,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/addCartBtn" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
