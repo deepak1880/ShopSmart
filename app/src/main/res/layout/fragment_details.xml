@@ -30,14 +30,31 @@
             android:layout_height="wrap_content"
             android:padding="10dp">
 
+            <TextView
+                android:id="@+id/detailsTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="The AirMax Run features a breathable mesh upper, cushioned midsole, and durable rubber outsole, offering comfort and support for your daily runs."
+                android:textSize="15sp"
+                android:gravity="start"
+                android:maxLines="3"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:lineSpacingExtra="2dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <ImageView
                 android:id="@+id/productImageView"
                 android:layout_width="250dp"
                 android:layout_height="250dp"
                 android:src="@drawable/nike_shoe"
+                android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/detailsTv" />
 
             <TextView
                 android:id="@+id/productNameTv"
@@ -48,6 +65,7 @@
                 android:text="@string/product_name"
                 android:textSize="25sp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/productImageView" />
@@ -60,6 +78,7 @@
                 android:text="@string/product_description"
                 android:textSize="18sp"
                 android:gravity="center"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/productNameTv" />
@@ -71,7 +90,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="@string/product_price"
-                android:textColor="#000"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@+id/spinnerQuantity"
                 app:layout_constraintStart_toStartOf="parent"
