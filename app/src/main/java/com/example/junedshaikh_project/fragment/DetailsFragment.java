@@ -57,6 +57,7 @@ public class DetailsFragment extends Fragment {
                 navController.navigate(R.id.action_detailsFragment_to_checkoutFragment);
             }
         });
+        //return view;
     }
 
     private void addToCart() {

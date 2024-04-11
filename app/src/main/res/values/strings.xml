@@ -21,11 +21,24 @@
     <string name="product_details">Product Details</string>
     <string name="checkout_page">Checkout Page</string>
     <string name="order_confirmation_message">Your order has been placed.</string>
+    <string name="address_label">Address<font color="#FF0000">*</font></string>
+    <string name="address_hint">Address</string>
+    <string name="landmark_label">Landmark<font color="#FF0000">*</font></string>
+    <string name="landmark_hint">Landmark</string>
+    <string name="city_label">City</string>
+    <string name="city_hint">City</string>
+    <string name="state_label">State<font color="#FF0000">*</font></string>
+    <string name="state_hint">State</string>
+    <string name="pin_code_label">Pin Code</string>
+    <string name="pin_code_hint">Pin code</string>
+    <string name="submit">Submit</string>
+    <string name="proceed_to_checkout">Proceed to checkout</string>
+    <string name="name_labe">Name<font color="#FF0000">*</font></string>
 
     <string-array name="quantity_array">
         <item>1</item>
         <item>2</item>
         <item>3</item>
-        <!-- Add more items as needed -->
+
     </string-array>
 </resources>

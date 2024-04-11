@@ -25,6 +25,7 @@ public class ThankyouFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // Your onViewCreated logic here
+//        return view;
     }
 
     @Override
