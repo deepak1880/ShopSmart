@@ -75,4 +75,5 @@ dependencies {
 
     implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.core:core-splashscreen:1.0.0")
 }

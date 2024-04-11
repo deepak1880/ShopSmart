@@ -2,6 +2,7 @@ package com.example.junedshaikh_project.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.junedshaikh_project.R
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        installSplashScreen()
 
         val navView: BottomNavigationView = binding.bottomNavigation
 
