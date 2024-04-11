@@ -51,7 +51,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     }
 
                 }, onClickBuy = {
-                    // Handle onClickBuy action
+                    findNavController().navigate(
+                        R.id.action_homeFragment_to_checkoutFragment,
+                    )
                 }, onClickImage = {
                     val bundle = Bundle()
                     bundle.putSerializable("product", it)

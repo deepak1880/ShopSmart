@@ -8,10 +8,10 @@ import com.example.junedshaikh_project.databinding.ProductListingItemBinding
 import com.example.junedshaikh_project.db.Product
 
 class ProductAdapter(
-    private val products: List<Product>,
+    private var products: List<Product>,
     private var onClickCart: (Product) -> Unit,
     private var onClickBuy: (Product) -> Unit,
-    private var onClickImage:(Product)->Unit
+    private var onClickImage: (Product) -> Unit
 ) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
@@ -45,7 +45,7 @@ class ProductAdapter(
                 buyNowBtn.setOnClickListener {
                     onClickBuy.invoke(product)
                 }
-                productImageView.setOnClickListener{
+                productImageView.setOnClickListener {
                     onClickImage.invoke((product))
                 }
 

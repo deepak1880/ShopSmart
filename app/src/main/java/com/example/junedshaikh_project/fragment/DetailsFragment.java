@@ -4,15 +4,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.bumptech.glide.Glide;
 import com.example.junedshaikh_project.R;
 import com.example.junedshaikh_project.databinding.FragmentDetailsBinding;
 import com.example.junedshaikh_project.db.Product;
+import com.example.junedshaikh_project.db.ProductDao;
+import com.example.junedshaikh_project.db.ProductDatabase;
 
 public class DetailsFragment extends Fragment {
 
@@ -42,6 +47,27 @@ public class DetailsFragment extends Fragment {
                 binding.productPriceTv.setText("$" + product.getPrice());
                 Glide.with(requireContext()).load(product.getImageUrl()).into(binding.productImageView);
             }
+        }
+        binding.addCartBtn.setOnClickListener(v -> addToCart());
+
+        binding.buyNowBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavController navController = Navigation.findNavController(requireActivity(), R.id.fragentContainer);
+                navController.navigate(R.id.action_detailsFragment_to_checkoutFragment);
+            }
+        });
+    }
+
+    private void addToCart() {
+        if (product != null) {
+            new Thread(() -> {
+                ProductDao productDao = ProductDatabase.getDatabase(requireContext()).getProductDao();
+                productDao.insert(product);
+
+                requireActivity().runOnUiThread(() ->
+                        Toast.makeText(requireContext(), "Product added to cart", Toast.LENGTH_SHORT).show());
+            }).start();
         }
     }
 
