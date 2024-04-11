@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.junedshaikh_project.R
@@ -69,4 +70,3 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     }
 }
-

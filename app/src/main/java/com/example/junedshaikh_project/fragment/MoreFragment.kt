@@ -3,6 +3,7 @@ package com.example.junedshaikh_project.fragment
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import com.example.junedshaikh_project.activity.LoginActivity
 import com.example.junedshaikh_project.databinding.FragmentMoreBinding
 import com.example.thefoodcoast.base.BaseFragment

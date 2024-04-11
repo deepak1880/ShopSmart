@@ -57,7 +57,9 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     //coil
-    implementation("io.coil-kt:coil:2.6.0")
+    implementation("io.coil-kt:coil:1.4.0")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
     //room db
     val lifecycle_version = "2.7.0"

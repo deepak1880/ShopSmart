@@ -2,6 +2,7 @@ package com.example.junedshaikh_project.fragment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.res.TypedArrayUtils.getText
 import androidx.navigation.fragment.findNavController
 import com.example.junedshaikh_project.R
 import com.example.junedshaikh_project.databinding.FragmentCheckOutBinding
