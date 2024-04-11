@@ -15,7 +15,7 @@ import com.example.junedshaikh_project.databinding.FragmentMoreBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class More extends Fragment {
+public class MoreFragment extends Fragment {
 
     private FragmentMoreBinding binding;
     private FirebaseAuth auth;

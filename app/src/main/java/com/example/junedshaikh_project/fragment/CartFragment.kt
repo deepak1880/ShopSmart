@@ -34,12 +34,12 @@ class CartFragment : BaseFragment<FragmentCartBinding>() {
         cartAdapter = CartAdapter(
             onClick = {
                 CoroutineScope(Dispatchers.IO).launch {
-                    it.inCart = true
-                    ProductDatabase.getDatabase(requireContext()).getNoteDao().delete(it)
+                    it.isInCart = true
+                    ProductDatabase.getDatabase(requireContext()).getProductDao().delete(it)
                 }
             })
         binding.myCartListsRecyclerView.adapter = cartAdapter
-        ProductDatabase.getDatabase(requireContext()).getNoteDao().getCartProducts()
+        ProductDatabase.getDatabase(requireContext()).getProductDao().getCartProducts()
             .observe(viewLifecycleOwner) { products ->
                 cartAdapter!!.submitList(products)
                 updateUIVisibility()

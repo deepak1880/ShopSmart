@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.junedshaikh_project.R
@@ -47,8 +46,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 binding.productRv.layoutManager = LinearLayoutManager(context)
                 productAdapter = ProductAdapter(productList, onClickCart = {
                     CoroutineScope(Dispatchers.IO).launch {
-                        it.inCart = true
-                        ProductDatabase.getDatabase(requireContext()).getNoteDao().insert(it)
+                        it.isInCart = true
+                        ProductDatabase.getDatabase(requireContext()).getProductDao().insert(it)
                     }
 
                 }, onClickBuy = {
