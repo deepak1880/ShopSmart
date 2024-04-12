@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/white"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     tools:context=".fragment.CartFragment">
 
     <include
@@ -21,13 +21,14 @@
         android:id="@+id/myCartListsRecyclerView"
         android:name="com.example.neostore.fragments.MyCartPage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/dimens_5dp"
         android:nestedScrollingEnabled="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/commonHeaderLayout"
+        app:layout_constraintBottom_toTopOf="@+id/orderNowButton"
         tools:itemCount="3"
         tools:listitem="@layout/cart_item_listing" />
 
@@ -64,6 +65,7 @@
         android:backgroundTint="@color/yellow"
         android:letterSpacing="0"
         android:padding="5dp"
+        app:elevation="0dp"
         android:text="Order Now"
         android:textAllCaps="true"
         android:textColor="@color/white"
@@ -72,6 +74,6 @@
         app:cornerRadius="20px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myCartListsRecyclerView" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

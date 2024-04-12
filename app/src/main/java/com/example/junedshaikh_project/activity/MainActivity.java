@@ -1,6 +1,7 @@
 package com.example.junedshaikh_project.activity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,5 +40,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
         NavigationUI.setupWithNavController(navView, navController);
+
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            int destinationId = destination.getId();
+            if (destinationId == R.id.homeFragment ||
+                    destinationId == R.id.cartFragment ||
+                    destinationId == R.id.moreFragment) {
+                showBottomNav();
+            } else {
+                hideBottomNav();
+            }
+        });
+    }
+
+    private void hideBottomNav() {
+        binding.bottomNavigation.setVisibility(View.GONE);
+    }
+
+    private void showBottomNav() {
+        binding.bottomNavigation.setVisibility(View.VISIBLE);
     }
 }

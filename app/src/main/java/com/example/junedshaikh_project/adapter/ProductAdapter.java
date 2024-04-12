@@ -3,17 +3,22 @@ package com.example.junedshaikh_project.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.junedshaikh_project.databinding.ProductListingItemBinding;
 import com.example.junedshaikh_project.db.Product;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     private List<Product> products;
+    private List<Product> filteredList;
+
     private OnClickCart onClickCart;
     private OnClickBuy onClickBuy;
     private OnClickImage onClickImage;
@@ -32,6 +37,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     public ProductAdapter(List<Product> products, OnClickCart onClickCart, OnClickBuy onClickBuy, OnClickImage onClickImage) {
         this.products = products;
+        this.filteredList = new ArrayList<>(products);
         this.onClickCart = onClickCart;
         this.onClickBuy = onClickBuy;
         this.onClickImage = onClickImage;
@@ -46,13 +52,22 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        Product product = products.get(position);
+        Product product = filteredList.get(position);
         holder.bind(product);
     }
 
     @Override
     public int getItemCount() {
-        return products.size();
+        return filteredList.size();
+    }
+    public void filterList(String search) {
+        filteredList.clear();
+        for (Product item : products) {
+            if (item.getName() != null && item.getName().toLowerCase().contains(search.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+        notifyDataSetChanged();
     }
 
     public class ProductViewHolder extends RecyclerView.ViewHolder {

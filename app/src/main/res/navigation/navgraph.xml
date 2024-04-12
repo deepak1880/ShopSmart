@@ -53,7 +53,11 @@
         android:id="@+id/thankyouFragment"
         android:name="com.example.junedshaikh_project.fragment.ThankyouFragment"
         android:label="fragment_thankyou"
-        tools:layout="@layout/fragment_thankyou" />
+        tools:layout="@layout/fragment_thankyou" >
+        <action
+            android:id="@+id/action_thankyouFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 
 
 </navigation>

@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -65,6 +67,8 @@ public class HomeFragment extends Fragment {
                             new Thread(() -> {
                                 product.setInCart(true);
                                 database.getProductDao().insert(product);
+                                requireActivity().runOnUiThread(() ->
+                                        Toast.makeText(requireContext(), "Product added to cart", Toast.LENGTH_SHORT).show());
                             }).start();
                         }
                     }, product -> NavHostFragment.findNavController(HomeFragment.this)
@@ -80,6 +84,22 @@ public class HomeFragment extends Fragment {
                     binding.productRv.setAdapter(productAdapter);
                 })
                 .addOnFailureListener(Throwable::printStackTrace);
+        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (newText != null) {
+                    if (productAdapter != null) {
+                        productAdapter.filterList(newText);
+                    }
+                }
+                return true;
+            }
+        });
     }
 
     @Override

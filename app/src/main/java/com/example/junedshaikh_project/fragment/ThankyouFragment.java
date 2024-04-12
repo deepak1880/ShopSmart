@@ -8,7 +8,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
+import com.example.junedshaikh_project.R;
 import com.example.junedshaikh_project.databinding.FragmentThankyouBinding;
 
 public class ThankyouFragment extends Fragment {
@@ -33,6 +36,13 @@ public class ThankyouFragment extends Fragment {
                 binding.personTextView.setText(name);
             }
         }
+        binding.continueShoppingTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavController navController = Navigation.findNavController(requireActivity(), R.id.fragentContainer);
+                navController.navigate(R.id.action_thankyouFragment_to_homeFragment);
+            }
+        });
     }
 
     @Override

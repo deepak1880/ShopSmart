@@ -46,7 +46,7 @@ public class DetailsFragment extends Fragment {
             if (product != null) {
                 binding.productNameTv.setText(product.getName());
                 binding.productDescTv.setText(product.getDescription());
-                binding.productPriceTv.setText("$" + product.getPrice());
+                binding.productPriceTv.setText("Price :$" + product.getPrice());
                 binding.detailsTv.setText(product.getDetails());
                 Glide.with(requireContext()).load(product.getImageUrl()).into(binding.productImageView);
             }
