@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.junedshaikh_project.R;
 import com.example.junedshaikh_project.activity.LoginActivity;
 import com.example.junedshaikh_project.databinding.FragmentMoreBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +33,10 @@ public class MoreFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         auth = FirebaseAuth.getInstance();
+
+        binding.commonHeaderLayout.commonHeaderBackArrow.setOnClickListener(v -> requireActivity().onBackPressed());
+        binding.commonHeaderLayout.commonHeaderTitleTextView.setText(R.string.profile_details);
+
 
         FirebaseUser currentUser = auth.getCurrentUser();
         if (currentUser != null) {

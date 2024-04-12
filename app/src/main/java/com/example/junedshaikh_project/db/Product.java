@@ -18,6 +18,9 @@ public class Product implements Serializable {
     @ColumnInfo(name = "description")
     private String description;
 
+    @ColumnInfo(name = "details")
+    private String details;
+
     @ColumnInfo(name = "price")
     private double price;
 
@@ -30,9 +33,10 @@ public class Product implements Serializable {
     @ColumnInfo(name = "quantity")
     private int quantity;
 
-    public Product(String name, String description, double price, String imageUrl) {
+    public Product(String name, String description, String details, double price, String imageUrl) {
         this.name = name;
         this.description = description;
+        this.details = details;
         this.price = price;
         this.imageUrl = imageUrl;
         this.inCart = false;
@@ -59,8 +63,16 @@ public class Product implements Serializable {
         return description;
     }
 
+    public String getDetails() {
+        return details;
+    }
+
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
     }
 
     public double getPrice() {
