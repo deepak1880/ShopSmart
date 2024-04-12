@@ -18,4 +18,7 @@ public interface ProductDao {
 
     @Query("SELECT * FROM product_table ORDER BY id ASC")
     LiveData<List<Product>> getCartProducts();
+
+    @Query("SELECT Count(*) FROM product_table ")
+    LiveData<Integer> getProductCount();
 }
