@@ -36,6 +36,8 @@
     <string name="name_labe">Name<font color="#FF0000">*</font></string>
     <string name="total_amount">Total Amount: $0.00</string>
     <string name="total_price">Total Price: %d</string>
+    <string name="payment">Payment Methode<font color="#FF0000">*</font></string>
+
 
 
     <string-array name="quantity_array">

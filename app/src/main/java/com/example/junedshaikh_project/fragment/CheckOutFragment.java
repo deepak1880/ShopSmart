@@ -14,6 +14,7 @@ import androidx.navigation.Navigation;
 
 import com.example.junedshaikh_project.R;
 import com.example.junedshaikh_project.databinding.FragmentCheckOutBinding;
+import com.example.junedshaikh_project.db.ProductDatabase;
 
 public class CheckOutFragment extends Fragment {
 
@@ -43,6 +44,18 @@ public class CheckOutFragment extends Fragment {
                     NavController navController = Navigation.findNavController(requireActivity(), R.id.fragentContainer);
                     navController.navigate(R.id.action_checkoutFragment_to_thankyouFragment,bundle);
                 }
+            }
+        });
+
+        updateTotalPrice();
+
+
+    }
+
+    private void updateTotalPrice() {
+        ProductDatabase.getDatabase(requireContext()).getProductDao().getTotalPrice().observe(getViewLifecycleOwner(), totalPrice -> {
+            if (totalPrice != null) {
+                binding.totalAmountTextView.setText(getString(R.string.total_price, totalPrice));
             }
         });
     }
@@ -88,6 +101,38 @@ public class CheckOutFragment extends Fragment {
             valid = false;
         } else {
             binding.pinCodeInputLayout.setError(null);
+        }
+
+        // Validate card holder name
+        if (binding.paymentLayout.cardNameLayout.getEditText().toString().isEmpty()) {
+            binding.paymentLayout.cardNameLayout.setError("Name is required");
+            valid = false;
+        } else {
+            binding.paymentLayout.cardNameLayout.setError(null);
+        }
+
+        // Validate card number
+        if (binding.paymentLayout.cardNumberLayout.getEditText().toString().isEmpty()) {
+            binding.paymentLayout.cardNumberLayout.setError("Card Number is required");
+            valid = false;
+        } else {
+            binding.paymentLayout.cardNumberLayout.setError(null);
+        }
+
+        // Validate CVV
+        if (binding.paymentLayout.cvvLayout.getEditText().toString().isEmpty()) {
+            binding.paymentLayout.cvvLayout.setError("CVV is required");
+            valid = false;
+        } else {
+            binding.paymentLayout.cvvLayout.setError(null);
+        }
+
+        // Validate expiry date
+        if (binding.paymentLayout.expiryDateLayout.getEditText().toString().isEmpty()) {
+            binding.paymentLayout.expiryDateLayout.setError("Expiry Date is required");
+            valid = false;
+        } else {
+            binding.paymentLayout.expiryDateLayout.setError(null);
         }
 
         return valid;

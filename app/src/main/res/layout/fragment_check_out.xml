@@ -204,6 +204,41 @@
         </com.google.android.material.textfield.TextInputLayout>
         <!-- Pin code ends -->
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/paymentMethode"
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/payment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pinCodeInputLayout" />
+        <include
+            android:id="@+id/paymentLayout"
+            layout="@layout/card_layout"
+            android:layout_width="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/paymentMethode"
+             />
+
+        <TextView
+            android:id="@+id/totalAmountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_amount"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/paymentLayout"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/submitButton"
+            android:layout_marginHorizontal="10dp"/>
+
         <!-- Submit button starts -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/submitButton"
@@ -216,7 +251,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pinCodeInputLayout" />
+            app:layout_constraintTop_toBottomOf="@id/paymentLayout" />
         <!-- Submit button ends -->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
