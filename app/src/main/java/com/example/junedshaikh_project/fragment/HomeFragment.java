@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -45,6 +46,7 @@ public class HomeFragment extends Fragment {
 
         db = FirebaseFirestore.getInstance();
         database = ProductDatabase.getDatabase(requireContext());
+        ProgressBar progressBar = binding.progressBar; // Reference to the ProgressBar in your layout
 
         db.collection("Products")
                 .get()
@@ -82,6 +84,7 @@ public class HomeFragment extends Fragment {
                         }
                     });
                     binding.productRv.setAdapter(productAdapter);
+                    progressBar.setVisibility(View.GONE);
                 })
                 .addOnFailureListener(Throwable::printStackTrace);
         binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
