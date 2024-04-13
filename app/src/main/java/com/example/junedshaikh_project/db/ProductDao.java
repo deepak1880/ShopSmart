@@ -21,4 +21,7 @@ public interface ProductDao {
 
     @Query("SELECT Count(*) FROM product_table ")
     LiveData<Integer> getProductCount();
+
+    @Query("SELECT SUM(price * quantity) FROM product_table")
+    LiveData<Integer> getTotalPrice();
 }

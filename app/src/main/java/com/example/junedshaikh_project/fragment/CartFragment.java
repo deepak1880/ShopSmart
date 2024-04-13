@@ -54,8 +54,17 @@ public class CartFragment extends Fragment{
                 updateUIVisibility();
             }
         });
+        updateTotalPrice();
 
         binding.orderNowButton.setOnClickListener(v -> NavHostFragment.findNavController(CartFragment.this).navigate(R.id.action_cartFragment_to_checkoutFragment));
+    }
+
+    private void updateTotalPrice() {
+        ProductDatabase.getDatabase(requireContext()).getProductDao().getTotalPrice().observe(getViewLifecycleOwner(), totalPrice -> {
+            if (totalPrice != null) {
+                binding.totalAmountTextView.setText(getString(R.string.total_price, totalPrice));
+            }
+        });
     }
 
     private void updateUIVisibility() {
