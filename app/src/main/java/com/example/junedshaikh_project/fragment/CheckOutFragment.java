@@ -69,6 +69,9 @@ public class CheckOutFragment extends Fragment {
         ProductDatabase.getDatabase(requireContext()).getProductDao().getTotalPrice().observe(getViewLifecycleOwner(), totalPrice -> {
             if (totalPrice != null) {
                 binding.totalAmountTextView.setText(getString(R.string.total_price, totalPrice));
+                //binding.totalAmountTextView.setVisibility(View.VISIBLE);
+            }else{
+                binding.totalAmountTextView.setVisibility(View.GONE);
             }
         });
     }
