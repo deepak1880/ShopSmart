@@ -1,29 +1,33 @@
 package com.example.junedshaikh_project.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.example.junedshaikh_project.R;
 import com.example.junedshaikh_project.adapter.CartAdapter;
 import com.example.junedshaikh_project.databinding.FragmentCartBinding;
 import com.example.junedshaikh_project.db.Product;
 import com.example.junedshaikh_project.db.ProductDatabase;
+
 import java.util.List;
 
-public class CartFragment extends Fragment{
+public class CartFragment extends Fragment {
 
     private CartAdapter cartAdapter;
     private FragmentCartBinding binding;
 
     @Override
     public View onCreateView(
-        LayoutInflater inflater, ViewGroup container,
-        Bundle savedInstanceState
+            LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState
     ) {
         binding = FragmentCartBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -45,7 +49,10 @@ public class CartFragment extends Fragment{
         cartAdapter = new CartAdapter(product -> new Thread(() -> {
             product.setInCart(false);
             ProductDatabase.getDatabase(requireContext()).getProductDao().delete(product);
+        }).start(), productQnt -> new Thread(() -> {
+            ProductDatabase.getDatabase(requireContext()).getProductDao().updateQuantity(productQnt);
         }).start());
+
         binding.myCartListsRecyclerView.setAdapter(cartAdapter);
         ProductDatabase.getDatabase(requireContext()).getProductDao().getCartProducts().observe(getViewLifecycleOwner(), new androidx.lifecycle.Observer<List<Product>>() {
             @Override

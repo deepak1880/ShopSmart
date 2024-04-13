@@ -1,15 +1,18 @@
 package com.example.junedshaikh_project.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.junedshaikh_project.databinding.CartItemListingBinding;
 import com.example.junedshaikh_project.db.Product;
+
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
@@ -17,8 +20,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
     private List<Product> productList;
     private final OnProductClickListener onClick;
 
-    public CartAdapter(OnProductClickListener onClick) {
+    private final OnQuantitySelectedListener onSelectedQuantity;
+
+    public CartAdapter(OnProductClickListener onClick, OnQuantitySelectedListener onSelectedQuantity) {
         this.onClick = onClick;
+        this.onSelectedQuantity = onSelectedQuantity;
     }
 
     public void submitList(List<Product> list) {
@@ -52,6 +58,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         void onItemClick(Product product);
     }
 
+    public interface OnQuantitySelectedListener {
+        void onQuantitySelected(Product product);
+    }
+
     public class CartViewHolder extends RecyclerView.ViewHolder {
 
         private final CartItemListingBinding binding;
@@ -66,8 +76,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                     onClick.onItemClick(productList.get(getAdapterPosition()));
                 }
             });
-        }
 
+        }
         public void bind(Product product) {
             Glide.with(binding.getRoot())
                     .load(product.getImageUrl())
@@ -80,13 +90,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             binding.spinnerQuantity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    product.setQuantity(position + 1);
+                    if (onSelectedQuantity != null) {
+                        Product product = productList.get(getAdapterPosition());
+                        product.setQuantity(position + 1);
+                        onSelectedQuantity.onQuantitySelected(product);
+                    }
                 }
 
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
                 }
             });
+
         }
     }
 }
