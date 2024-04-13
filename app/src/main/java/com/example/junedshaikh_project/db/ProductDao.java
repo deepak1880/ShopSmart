@@ -24,4 +24,7 @@ public interface ProductDao {
 
     @Query("SELECT SUM(price * quantity) FROM product_table")
     LiveData<Integer> getTotalPrice();
+
+    @Query("DELETE FROM product_table")
+    void deleteAllProducts();
 }

@@ -39,12 +39,25 @@ public class CheckOutFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (validateInputs()) {
+                    deleteAllProducts();
                     Bundle bundle = new Bundle();
                     bundle.putString("name", binding.nameEditText.getText().toString().trim());
                     NavController navController = Navigation.findNavController(requireActivity(), R.id.fragentContainer);
                     navController.navigate(R.id.action_checkoutFragment_to_thankyouFragment,bundle);
                 }
             }
+
+            private void deleteAllProducts() {
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Perform database operation on a background thread
+                        ProductDatabase.getDatabase(requireContext()).getProductDao().deleteAllProducts();
+                    }
+                });
+                thread.start();
+            }
+
         });
 
         updateTotalPrice();
