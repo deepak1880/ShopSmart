@@ -71,9 +71,11 @@ public class CartFragment extends Fragment{
         if (cartAdapter.isCartEmpty()) {
             binding.noDataFoundLayout.setVisibility(View.VISIBLE);
             binding.orderNowButton.setVisibility(View.GONE);
+            binding.totalAmountTextView.setVisibility(View.GONE);
         } else {
             binding.noDataFoundLayout.setVisibility(View.GONE);
             binding.orderNowButton.setVisibility(View.VISIBLE);
+            binding.totalAmountTextView.setVisibility(View.VISIBLE);
         }
     }
 }
