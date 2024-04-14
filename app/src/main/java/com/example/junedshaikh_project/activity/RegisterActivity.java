@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
-public class RegistorActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     private ActivityRegistorBinding binding;
     private FirebaseAuth auth;
@@ -41,8 +41,16 @@ public class RegistorActivity extends AppCompatActivity {
                 if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
                     registerUser(name, email, password);
                 } else {
-                    Toast.makeText(RegistorActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        binding.loginHereTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -70,12 +78,12 @@ public class RegistorActivity extends AppCompatActivity {
                                         .build();
                                 user.updateProfile(profileUpdates);
 
-                                Toast.makeText(RegistorActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(RegistorActivity.this, LoginActivity.class));
+                                Toast.makeText(RegisterActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                 finish();
                             }
                         } else {
-                            Toast.makeText(RegistorActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

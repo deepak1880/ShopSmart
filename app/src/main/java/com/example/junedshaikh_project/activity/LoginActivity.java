@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.registerTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent iNext = new Intent(LoginActivity.this, RegistorActivity.class);
+                Intent iNext = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(iNext);
             }
         });

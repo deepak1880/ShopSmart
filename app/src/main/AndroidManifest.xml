@@ -16,7 +16,7 @@
             android:name=".activity.ForgotActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.RegistorActivity"
+            android:name=".activity.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"

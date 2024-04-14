@@ -43,7 +43,7 @@ public class CheckOutFragment extends Fragment {
                     Bundle bundle = new Bundle();
                     bundle.putString("name", binding.nameEditText.getText().toString().trim());
                     NavController navController = Navigation.findNavController(requireActivity(), R.id.fragentContainer);
-                    navController.navigate(R.id.action_checkoutFragment_to_thankyouFragment,bundle);
+                    navController.navigate(R.id.action_checkoutFragment_to_thankyouFragment, bundle);
                 }
             }
 
@@ -70,7 +70,7 @@ public class CheckOutFragment extends Fragment {
             if (totalPrice != null) {
                 binding.totalAmountTextView.setText(getString(R.string.total_price, totalPrice));
                 //binding.totalAmountTextView.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 binding.totalAmountTextView.setVisibility(View.GONE);
             }
         });
@@ -118,9 +118,8 @@ public class CheckOutFragment extends Fragment {
         } else {
             binding.pinCodeInputLayout.setError(null);
         }
-
         // Validate card holder name
-        if (binding.paymentLayout.cardNameLayout.getEditText().toString().isEmpty()) {
+        if (TextUtils.isEmpty(binding.paymentLayout.cardNameLayout.getEditText().getText().toString())) {
             binding.paymentLayout.cardNameLayout.setError("Name is required");
             valid = false;
         } else {
@@ -128,7 +127,7 @@ public class CheckOutFragment extends Fragment {
         }
 
         // Validate card number
-        if (binding.paymentLayout.cardNumberLayout.getEditText().toString().isEmpty()) {
+        if (TextUtils.isEmpty(binding.paymentLayout.cardNumberLayout.getEditText().getText().toString())) {
             binding.paymentLayout.cardNumberLayout.setError("Card Number is required");
             valid = false;
         } else {
@@ -136,7 +135,7 @@ public class CheckOutFragment extends Fragment {
         }
 
         // Validate CVV
-        if (binding.paymentLayout.cvvLayout.getEditText().toString().isEmpty()) {
+        if (TextUtils.isEmpty(binding.paymentLayout.cvvLayout.getEditText().getText().toString())) {
             binding.paymentLayout.cvvLayout.setError("CVV is required");
             valid = false;
         } else {
@@ -144,7 +143,7 @@ public class CheckOutFragment extends Fragment {
         }
 
         // Validate expiry date
-        if (binding.paymentLayout.expiryDateLayout.getEditText().toString().isEmpty()) {
+        if (TextUtils.isEmpty(binding.paymentLayout.expiryDateLayout.getEditText().getText().toString())) {
             binding.paymentLayout.expiryDateLayout.setError("Expiry Date is required");
             valid = false;
         } else {
